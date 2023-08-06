@@ -1,0 +1,14 @@
+version: "3.7"
+services:  
+  airflow:
+    build: ./airflow_container_code/
+    restart: always
+    networks:
+      - default_net
+    volumes:
+      - airflow_container_code/dags:/usr/local/airflow/dags
+    ports:
+      - "8080:8080"
+    command: webserver
+networks:
+    default_net:
